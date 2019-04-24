@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ASAPTestApp.iml" filepath="$PROJECT_DIR$/ASAPTestApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../eosio-java/eosiojava/eosiojava.iml" filepath="$PROJECT_DIR$/../eosio-java/eosiojava/eosiojava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../eosio-java-android-abieos-serialization-provider/eosiojavaabieos/eosiojavaabieos.iml" filepath="$PROJECT_DIR$/../eosio-java-android-abieos-serialization-provider/eosiojavaabieos/eosiojavaabieos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../eosio-java-android-rpc-provider/eosiojavarpcprovider/eosiojavarpcprovider.iml" filepath="$PROJECT_DIR$/../eosio-java-android-rpc-provider/eosiojavarpcprovider/eosiojavarpcprovider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../eosio-java-softkey-signature-provider/eosiojavasoftkeysignatureprovider/eosiojavasoftkeysignatureprovider.iml" filepath="$PROJECT_DIR$/../eosio-java-softkey-signature-provider/eosiojavasoftkeysignatureprovider/eosiojavasoftkeysignatureprovider.iml" />
+    </modules>
+  </component>
+</project>

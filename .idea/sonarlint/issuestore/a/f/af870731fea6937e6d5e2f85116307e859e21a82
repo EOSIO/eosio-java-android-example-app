@@ -1,0 +1,10 @@
+
+@squid:S1148:"#Use a logger to log this exception.(…’Â]8Âº„ó -
+bsquid:UselessImportCheck"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ8é¸Â–¡-
+Fsquid:S1148V"#Use a logger to log this exception.(ßüŸàÿÿÿÿÿ8¥ßÈ–¡-
+~squid:S26374"gParameter 1 to this constructor is marked "org.jetbrains.annotations.NotNull" but null could be passed.(Ûëò
+Asquid:S1148T"#Use a logger to log this exception.(½‘ıÛ8ÉûÇ–¡-
+~squid:S2637="gParameter 2 to this constructor is marked "org.jetbrains.annotations.NotNull" but null could be passed.(øå¬˜
+?squid:S1148*"#Use a logger to log this exception.(Ç³üòşÿÿÿÿ
+?squid:S11481"#Use a logger to log this exception.(ÆĞ’ˆûÿÿÿÿ
+[squid:UselessImportCheck"2Remove this unused import 'android.widget.Button'.(²òıÿÿÿÿ
