@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ASAPTestApp</string>
+    <string name="app_name">ASAP Test App</string>
+    <string name="account_balance">Account\'s balance :</string>
 </resources>

@@ -45,6 +45,9 @@ dependencies {
     implementation project(':eosiojavasoftkeysignatureprovider')
     implementation project(':eosiojavarpcprovider')
 
+    // TODO Revisit to clean up this dependency when fully move to artifactory
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'

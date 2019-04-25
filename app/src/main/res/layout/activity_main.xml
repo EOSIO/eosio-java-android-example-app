@@ -6,27 +6,143 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_push"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="Sign and Push Transaction"
-        android:background="@color/colorPrimary"
-        android:textColor="#ffffff"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
     <TextView
         android:id="@+id/tv_status"
         android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fadeScrollbars="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
+        android:padding="5dp"
+        android:background="@android:color/darker_gray"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/edt_private_key" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Status"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/btn_push"/>
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="395dp" />
+
+    <EditText
+        android:id="@+id/edt_from_account"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Your account name"
+        android:inputType="textPersonName"
+        android:text="@string/from_account"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <EditText
+        android:id="@+id/edt_to_account"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Receiver account name"
+        android:inputType="textPersonName"
+        android:text="@string/to_account"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/tv_balance" />
+
+    <EditText
+        android:id="@+id/edt_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Transfer Amount"
+        android:inputType="textPersonName"
+        android:text="@string/amount"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/edt_to_account" />
+
+    <EditText
+        android:id="@+id/edt_memo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Memo"
+        android:inputType="textPersonName"
+        android:text="@string/memo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/edt_amount" />
+
+    <EditText
+        android:id="@+id/edt_private_key"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:hint="Private key"
+        android:inputType="textPersonName"
+        android:text="@string/from_account_private_key"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/edt_amount" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="666dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="268dp" />
+
+    <TextView
+        android:id="@+id/tv_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Account balance %s"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/edt_from_account" />
+
+    <Button
+        android:id="@+id/btn_check_balance"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="CHECK"
+        app:layout_constraintBottom_toTopOf="@+id/edt_to_account"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <Button
+        android:id="@+id/btn_transfer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="TRANSFER"
+        app:layout_constraintBottom_toBottomOf="@+id/edt_private_key"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/edt_private_key" />
 </androidx.constraintlayout.widget.ConstraintLayout>
