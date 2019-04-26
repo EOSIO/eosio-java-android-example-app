@@ -13,7 +13,7 @@ android {
     }
 
     def Properties properties = new Properties()
-    properties.load(project.rootProject.file("local.properties").newDataInputStream())
+    properties.load(project.rootProject.file("eosio.properties").newDataInputStream())
 
     buildTypes {
         debug {
