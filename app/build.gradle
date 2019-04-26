@@ -16,6 +16,7 @@ android {
     properties.load(project.rootProject.file("eosio.properties").newDataInputStream())
 
     buildTypes {
+
         debug {
             resValue "string", "node_url", properties.getProperty("node_url", "")
             resValue "string", "from_account", properties.getProperty("from_account", "")
@@ -25,6 +26,13 @@ android {
             resValue "string", "memo", properties.getProperty("memo", "")
         }
         release {
+            resValue "string", "node_url", properties.getProperty("node_url", "")
+            resValue "string", "from_account", properties.getProperty("from_account", "")
+            resValue "string", "to_account", properties.getProperty("to_account", "")
+            resValue "string", "from_account_private_key", properties.getProperty("from_account_private_key", "")
+            resValue "string", "amount", properties.getProperty("amount", "")
+            resValue "string", "memo", properties.getProperty("memo", "")
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -40,6 +48,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 
