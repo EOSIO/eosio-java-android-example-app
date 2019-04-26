@@ -8,7 +8,30 @@ An Android app that demonstrates how developers can use [EOSIO Java](https://git
 
 EOSIO Labs repositories are experimental.  Developers in the community are encouraged to use EOSIO Labs repositories as the basis for code and concepts to incorporate into their applications. Community members are also welcome to contribute and further develop these repositories. Since these repositories are not supported by Block.one, we may not provide responses to issue reports, pull requests, updates to functionality, or other requests from the community, and we encourage the community to take responsibility for these.
 
-## Overview
+## Usage
+
+The example app is using these below libraries to communicate with EOSIO chain: 
+
+```java
+implementation 'one.block:eosiojava:0.0.1'
+implementation 'one.block:eosiojavasoftkeysignatureprovider:0.0.1'
+implementation 'one.block:eosiojavaandroidabieosserializationprovider:0.0.1'
+implementation 'one.block:eosiojavarpcprovider:0.0.1'
+```
+
+There are some predefined properties need to be filled to run the app in **eosio.properties**: 
+
+```java
+node_url=your node endpoint URL //mandatory
+from_account = your account //optional
+to_account = receiver account //optional
+from_account_private_key = your private key //optional
+amount = amount to transfer //optional
+memo = transaction's memo //optional
+```
+**node_url** is mandatory for the app to point to a specific endpoint. 
+
+**from_account**, **to_account**, **from_account_private_key**, **amount** and **memo** are optional fields which will be filled to the app's form for quickly making transaction. 
 
 
 ## Contribution
