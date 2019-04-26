@@ -13,7 +13,7 @@ android {
     }
 
     def Properties properties = new Properties()
-    properties.load(project.rootProject.file("eosio.properties").newDataInputStream())
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
     buildTypes {
 
@@ -57,13 +57,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'one.block:eosiojava:1.0.0'
-    implementation 'one.block:eosiojavasoftkeysignatureprovider:1.0.0'
-    implementation 'one.block:eosiojavaandroidabieosserializationprovider:1.0.0'
-    implementation 'one.block:eosiojavarpcprovider:1.0.0-SNAPSHOT'
-
-    // TODO Revisit to clean up this dependency when fully move to artifactory
-    //implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'one.block:eosiojava:0.0.1'
+    implementation 'one.block:eosiojavasoftkeysignatureprovider:0.0.1'
+    implementation 'one.block:eosiojavaandroidabieosserializationprovider:0.0.1'
+    implementation 'one.block:eosiojavarpcprovider:0.0.1'
 
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
