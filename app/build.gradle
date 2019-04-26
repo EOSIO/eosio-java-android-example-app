@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -10,14 +11,18 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    def Properties properties = new Properties()
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
     buildTypes {
         debug {
-            resValue "string", "node_url", node_url
-            resValue "string", "from_account", from_account
-            resValue "string", "to_account", to_account
-            resValue "string", "from_account_private_key", from_account_private_key
-            resValue "string", "amount", amount
-            resValue "string", "memo", memo
+            resValue "string", "node_url", properties.getProperty("node_url", "")
+            resValue "string", "from_account", properties.getProperty("from_account", "")
+            resValue "string", "to_account", properties.getProperty("to_account", "")
+            resValue "string", "from_account_private_key", properties.getProperty("from_account_private_key", "")
+            resValue "string", "amount", properties.getProperty("amount", "")
+            resValue "string", "memo", properties.getProperty("memo", "")
         }
         release {
             minifyEnabled false
