@@ -40,13 +40,13 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':eosiojava')
-    implementation project(':eosiojavaabieos')
-    implementation project(':eosiojavasoftkeysignatureprovider')
-    implementation project(':eosiojavarpcprovider')
+    implementation 'one.block:eosiojava:1.0.0'
+    implementation 'one.block:eosiojavasoftkeysignatureprovider:1.0.0'
+    implementation 'one.block:eosiojavaandroidabieosserializationprovider:1.0.0'
+    implementation 'one.block:eosiojavarpcprovider:1.0.0-SNAPSHOT'
 
     // TODO Revisit to clean up this dependency when fully move to artifactory
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    //implementation 'com.squareup.retrofit2:retrofit:2.5.0'
 
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

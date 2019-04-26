@@ -19,7 +19,11 @@ allprojects {
         google()
         jcenter()
         maven {
-            url  "http://localhost:8081/artifactory/test.maven"
+            credentials{
+                username artifactory_username
+                password artifactory_password
+            }
+            url artifactory_path_android_libraries
         }
     }
 }

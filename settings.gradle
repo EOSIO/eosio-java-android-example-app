@@ -1,13 +1,1 @@
 include ':app'
-
-include 'eosiojava'
-project(':eosiojava').projectDir = new File('../eosio-java/eosiojava/')
-
-include 'eosiojavaabieos'
-project(':eosiojavaabieos').projectDir = new File('../eosio-java-android-abieos-serialization-provider/eosiojavaabieos/')
-
-include 'eosiojavasoftkeysignatureprovider'
-project(':eosiojavasoftkeysignatureprovider').projectDir = new File('../eosio-java-softkey-signature-provider/eosiojavasoftkeysignatureprovider/')
-
-include 'eosiojavarpcprovider'
-project(':eosiojavarpcprovider').projectDir = new File('../eosio-java-android-rpc-provider/eosiojavarpcprovider/')
