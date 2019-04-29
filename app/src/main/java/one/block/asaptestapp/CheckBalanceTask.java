@@ -48,7 +48,7 @@ public class CheckBalanceTask extends AsyncTask<String, String, Void> {
 
         EosioJavaRpcProviderImpl rpcProvider;
         try {
-            this.publishProgress("Start checking account balance!");
+            this.publishProgress("Checking Account Balance...");
             rpcProvider = new EosioJavaRpcProviderImpl(nodeUrl);
             String getCurrentBalanceRequestJSON = "{\n" +
                     "\t\"code\" : \"eosio.token\"\n" +
@@ -58,17 +58,17 @@ public class CheckBalanceTask extends AsyncTask<String, String, Void> {
             RequestBody requestBody = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), getCurrentBalanceRequestJSON);
             String responseJSON = rpcProvider.getCurrencyBalance(requestBody);
 
-            this.publishProgress("Account balance check successfully");
+            this.publishProgress("Account Balance Check Successful!");
 
             JSONArray jsonArray = new JSONArray(responseJSON);
             if (jsonArray.length() == 0) {
-                this.publishProgress(Boolean.toString(false), "Invalid account!");
+                this.publishProgress(Boolean.toString(false), "Invalid Account!");
                 return null;
             }
 
             String accountBalance = jsonArray.getString(0);
 
-            this.publishProgress(Boolean.toString(true), "Current account balance " + accountBalance, accountBalance);
+            this.publishProgress(Boolean.toString(true), "Current Account Balance: " + accountBalance, accountBalance);
         } catch (EosioJavaRpcProviderInitializerError eosioJavaRpcProviderInitializerError) {
             // Happens if creating EosioJavaRpcProviderImpl unsuccessful
             eosioJavaRpcProviderInitializerError.printStackTrace();
