@@ -1,3 +1,4 @@
+![Java Logo](img/java-logo.png)
 # EOSIO Example Java Android App
 
 An Android app that demonstrates how developers can use [EOSIO Java](https://github.com/EOSIO/eosio-java).
@@ -8,7 +9,41 @@ An Android app that demonstrates how developers can use [EOSIO Java](https://git
 
 EOSIO Labs repositories are experimental.  Developers in the community are encouraged to use EOSIO Labs repositories as the basis for code and concepts to incorporate into their applications. Community members are also welcome to contribute and further develop these repositories. Since these repositories are not supported by Block.one, we may not provide responses to issue reports, pull requests, updates to functionality, or other requests from the community, and we encourage the community to take responsibility for these.
 
-## Usage
+## Contents
+
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [About the App](#about-the-app)
+- [Contribution](#contribution)
+- [License & Legal](#license)
+
+## Requirements
+
+* Android SDK 6.0+
+* Android Studio 3.0+
+* JDK 1.7
+
+## Installation
+
+To get the example application up and running:
+
+1. Clone this repo: `git clone https://github.com/EOSIO/eosio-java-android-example-app.git`
+1. Open the project with Android Studio.
+1. Create `gradle.properties` file:
+
+    ```java
+    node_url=your node endpoint URL //mandatory
+    from_account = your account //optional
+    to_account = receiver account //optional
+    from_account_private_key = your private key //optional
+    amount = amount to transfer //optional
+    memo = transaction's memo //optional
+    ```
+    **node_url** is mandatory for the app to point to a specific endpoint. 
+    
+    **from_account**, **to_account**, **from_account_private_key**, **amount** and **memo** are optional fields which will be filled to the app's form for quickly making transaction. 
+
+## About the App
 
 The example app is using these below libraries to communicate with EOSIO chain: 
 
@@ -19,20 +54,20 @@ implementation 'one.block:eosiojavaandroidabieosserializationprovider:0.0.1'
 implementation 'one.block:eosiojavarpcprovider:0.0.1'
 ```
 
-There are some predefined properties need to be filled to run the app in **eosio.properties**: 
+The [`TransactionTask.java`](app/src/main/java/one/block/asaptestapp/TransactionTask.java) contains the sample code about how to use eosiojava libraries to send out transactions in a most basic/easiest way.
 
-```java
-node_url=your node endpoint URL //mandatory
-from_account = your account //optional
-to_account = receiver account //optional
-from_account_private_key = your private key //optional
-amount = amount to transfer //optional
-memo = transaction's memo //optional
-```
-**node_url** is mandatory for the app to point to a specific endpoint. 
+Basic steps:
 
-**from_account**, **to_account**, **from_account_private_key**, **amount** and **memo** are optional fields which will be filled to the app's form for quickly making transaction. 
-
+1. Create serialization provider as an instant of {@link AbiEosSerializationProviderImpl} from [`eosiojavaandroidabieosserializationprovider`](https://github.com/EOSIO/eosio-java-android-abieos-serialization-provider) library.
+1. Create RPC provider as an instant of [`EosioJavaRpcProviderImpl`](https://github.com/EOSIO/eosio-java-android-rpc-provider/blob/master/eosiojavarpcprovider/src/main/java/one/block/eosiojavarpcprovider/implementations/EosioJavaRpcProviderImpl.java) with an input string point to a node backend.
+1. Create ABI provider as an instant of [`ABIProviderImpl`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/implementations/ABIProviderImpl.java) with instants of Rpc provider and serialization provider.
+1. Create Signature provider as an instant of [` SoftKeySignatureProviderImpl`](https://github.com/EOSIO/eosio-java-softkey-signature-provider/blob/master/eosiojavasoftkeysignatureprovider/src/main/java/one/block/eosiosoftkeysignatureprovider/SoftKeySignatureProviderImpl.java) which is not recommended for production because of its simple key management.
+    - Import an EOS private key which associate with sender's account which will be used to sign the transaction.
+1. Create an instant of [`TransactionSession`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionSession.java) which is used for spawning/factory [`TransactionProcessor`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionProcessor.java)
+1. Create an instant of [`TransactionProcessor`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionProcessor.java) from the instant of [`TransactionSession`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionSession.java) above by calling ` TransactionSession#getTransactionProcessor()` or `TransactionSession#getTransactionProcessor(Transaction)` if desire to use a preset [`Transaction`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/models/rpcProvider/Transaction.java) object.
+1. Call `TransactionProcessor#prepare(List)` with a list of Actions which is desired to be sent to backend. The method will serialize the list of action to list of hex and keep them inside the list of `Transaction#getActions()`. The transaction now is ready to be signed and broadcast.
+1. Call `TransactionProcessor#signAndBroadcast()` to sign the transaction inside [`TransactionProcessor`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionProcessor.java) and broadcast it to backend.
+ 
 
 ## Contribution
 Check out the [Contributing](./CONTRIBUTING.md) guide.
