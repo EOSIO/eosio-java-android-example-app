@@ -42,6 +42,7 @@ To get the example application up and running:
     **node_url** is mandatory for the app to point to a specific endpoint. 
     
     **from_account**, **to_account**, **from_account_private_key**, **amount** and **memo** are optional fields which will be filled to the app's form for quickly making transaction. 
+1. Run the App.
 
 ## About the App
 
