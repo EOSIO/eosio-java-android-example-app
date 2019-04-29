@@ -3,6 +3,7 @@ package one.block.asaptestapp;
 import android.os.AsyncTask;
 
 import java.util.Collections;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import one.block.eosiojava.error.serializationProvider.SerializationProviderError;
@@ -15,6 +16,7 @@ import one.block.eosiojava.interfaces.ISerializationProvider;
 import one.block.eosiojava.interfaces.ISignatureProvider;
 import one.block.eosiojava.models.rpcProvider.Action;
 import one.block.eosiojava.models.rpcProvider.Authorization;
+import one.block.eosiojava.models.rpcProvider.Transaction;
 import one.block.eosiojava.models.rpcProvider.response.PushTransactionResponse;
 import one.block.eosiojava.models.rpcProvider.response.RPCResponseError;
 import one.block.eosiojava.session.TransactionProcessor;
@@ -25,6 +27,30 @@ import one.block.eosiojavarpcprovider.implementations.EosioJavaRpcProviderImpl;
 import one.block.eosiosoftkeysignatureprovider.SoftKeySignatureProviderImpl;
 import one.block.eosiosoftkeysignatureprovider.error.ImportKeyError;
 
+/**
+ * This class is an example about the most basic/easy way to use eosio-java to send a transaction.
+ * <p>
+ * Basic steps:
+ * <p>
+ *     - Create serialization provider as an instant of {@link AbiEosSerializationProviderImpl} from [eosiojavaandroidabieosserializationprovider] library
+ *     <p>
+ *     - Create RPC provider as an instant of {@link EosioJavaRpcProviderImpl} with an input string point to a node backend.
+ *     <p>
+ *     - Create ABI provider as an instant of {@link ABIProviderImpl} with instants of Rpc provider and serialization provider.
+ *     <p>
+ *     - Create Signature provider as an instant of {@link SoftKeySignatureProviderImpl} which is not recommended for production because of its simple key management.
+ *     <p>
+ *         - Import an EOS private key which associate with sender's account which will be used to sign the transaction.
+ * <p>
+ *     - Create an instant of {@link TransactionSession} which is used for spawning/factory {@link TransactionProcessor}
+ * <p>
+ *     - Create an instant of {@link TransactionProcessor} from the instant of {@link TransactionSession} above by calling {@link TransactionSession#getTransactionProcessor()} or {@link TransactionSession#getTransactionProcessor(Transaction)} if desire to use a preset {@link Transaction} object.
+ * <p>
+ *     - Call {@link TransactionProcessor#prepare(List)} with a list of Actions which is desired to be sent to backend. The method will serialize the list of action to list of hex and keep them inside
+ * the list of {@link Transaction#getActions()}. The transaction now is ready to be signed and broadcast.
+ * <p>
+ *     - Call {@link TransactionProcessor#signAndBroadcast()} to sign the transaction inside {@link TransactionProcessor} and broadcast it to backend.
+ */
 public class TransactionTask extends AsyncTask<String, String, Void> {
 
     private TransactionTaskCallback callback;

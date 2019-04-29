@@ -70,7 +70,7 @@ public class ErrorUtils {
      */
     public static String getBackendErrorMessageFromResponse(@NonNull RPCResponseError error) {
         StringBuilder detail = new StringBuilder();
-        if (error.getError().getDetails().size() > 0) {
+        if (!error.getError().getDetails().isEmpty()) {
             for (Detail errorDetail : error.getError().getDetails()) {
                 detail.append(errorDetail.getMessage()).append(" - ");
             }

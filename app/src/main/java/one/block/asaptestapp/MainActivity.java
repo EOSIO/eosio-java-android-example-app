@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
                 executeCheckBalance(nodeUrl);
             }
         });
+
+        findViewById(R.id.btn_clear_log).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logs.clear();
+                tvStatus.setText("");
+            }
+        });
     }
 
     private void update() {
@@ -61,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void executeTransaction(final String nodeUrl) {
         // Collecting necessary data to send transaction
-        final String fromAccount = ((EditText) this.findViewById(R.id.edt_from_account)).getText().toString();
-        final String toAccount = ((EditText) this.findViewById(R.id.edt_to_account)).getText().toString();
-        final String privateKey = ((EditText) this.findViewById(R.id.edt_private_key)).getText().toString();
-        final String amount = ((EditText) this.findViewById(R.id.edt_amount)).getText().toString();
-        final String memo = ((EditText) this.findViewById(R.id.edt_memo)).getText().toString();
+        final String fromAccount = ((TextInputEditText) this.findViewById(R.id.edt_from_account)).getText().toString();
+        final String toAccount = ((TextInputEditText) this.findViewById(R.id.edt_to_account)).getText().toString();
+        final String privateKey = ((TextInputEditText) this.findViewById(R.id.edt_private_key)).getText().toString();
+        final String amount = ((TextInputEditText) this.findViewById(R.id.edt_amount)).getText().toString();
+        final String memo = ((TextInputEditText) this.findViewById(R.id.edt_memo)).getText().toString();
 
         this.btnTransfer.setEnabled(false);
         new TransactionTask(new TransactionTask.TransactionTaskCallback() {
@@ -121,10 +131,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String htmlErrorFormat(String error) {
-        return "<p style='color: red;'>" + error + "</p>";
+        return "<p style='color: #FF6B68;'>" + error + "</p>";
     }
 
     private String htmlSuccessFormat(String msg) {
-        return "<p style='color: green;'>" + msg + "</p>";
+        return "<p style='color: #008000;'>" + msg + "</p>";
     }
 }

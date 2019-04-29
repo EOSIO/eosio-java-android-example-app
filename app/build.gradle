@@ -68,4 +68,5 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     androidTestImplementation 'com.squareup.okhttp3:mockwebserver:3.12.1'
+    implementation 'com.google.android.material:material:1.0.0'
 }
