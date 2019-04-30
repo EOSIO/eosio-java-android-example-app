@@ -9,6 +9,10 @@ An Android app that demonstrates how developers can use [EOSIO Java](https://git
 
 EOSIO Labs repositories are experimental.  Developers in the community are encouraged to use EOSIO Labs repositories as the basis for code and concepts to incorporate into their applications. Community members are also welcome to contribute and further develop these repositories. Since these repositories are not supported by Block.one, we may not provide responses to issue reports, pull requests, updates to functionality, or other requests from the community, and we encourage the community to take responsibility for these.
 
+<p align="center">
+    <img src="img/screenshot.png" width="200">
+</p>
+
 ## Contents
 
 - [Requirements](#requirements)
@@ -54,6 +58,8 @@ implementation 'one.block:eosiojavasoftkeysignatureprovider:0.0.1'
 implementation 'one.block:eosiojavaandroidabieosserializationprovider:0.0.1'
 implementation 'one.block:eosiojavarpcprovider:0.0.1'
 ```
+
+The app can check user's balance and send transaction from the user to another user. 
 
 The [`TransactionTask.java`](app/src/main/java/one/block/asaptestapp/TransactionTask.java) contains the sample code about how to use eosiojava libraries to send out transactions in a most basic/easiest way.
 
