@@ -1,4 +1,4 @@
-![Java Logo](/img/java-logo.png)
+![Java Logo](img/java-logo.png)
 # EOSIO SDK for Java: Android Example App ![EOSIO Alpha](https://img.shields.io/badge/EOSIO-Alpha-blue.svg)
 [![Software License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](/./LICENSE)
 ![Language Java](https://img.shields.io/badge/Language-Java-yellow.svg)
