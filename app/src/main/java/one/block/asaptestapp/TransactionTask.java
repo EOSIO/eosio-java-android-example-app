@@ -81,7 +81,7 @@ public class TransactionTask extends AsyncTask<String, String, Void> {
         String amount = params[4];
         String memo = params[5];
 
-        this.publishProgress("Start Transferring " + amount + " to " + toAccount);
+        this.publishProgress("Transferring " + amount + " to " + toAccount);
 
         // Creating serialization provider
         ISerializationProvider serializationProvider;
@@ -133,14 +133,14 @@ public class TransactionTask extends AsyncTask<String, String, Void> {
         try {
 
             // Prepare transaction with above action. A transaction can be executed with multiple action.
-            this.publishProgress("Transaction preparing");
+            this.publishProgress("Preparing Transaction...");
             processor.prepare(Collections.singletonList(action));
 
             // Sign and broadcast the transaction.
-            this.publishProgress("Transaction sign and broadcast");
+            this.publishProgress("Signing and Broadcasting Transaction...");
             PushTransactionResponse response = processor.signAndBroadcast();
 
-            this.publishProgress(Boolean.toString(true), "Finish, transaction id " + response.getTransactionId());
+            this.publishProgress(Boolean.toString(true), "Finished!  Your transaction id is:  " + response.getTransactionId());
         } catch (TransactionPrepareError transactionPrepareError) {
             // Happens if preparing transaction unsuccessful
             transactionPrepareError.printStackTrace();
