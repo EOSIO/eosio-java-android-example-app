@@ -3,6 +3,8 @@
 
 An Android app that demonstrates how developers can use [EOSIO Java](https://github.com/EOSIO/eosio-java).
 
+All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.
+
 ![EOSIO Labs](https://img.shields.io/badge/EOSIO-Labs-5cb3ff.svg)
 
 ## About EOSIO Labs
