@@ -17,6 +17,7 @@ The EOSIO SDK for Java: Android Example App is a simple application demonstratin
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [About the App](#about-the-app)
+- [How to Transact](#how-to-transact)
 - [Want to Help?](#want-to-help)
 - [License & Legal](#license)
 
@@ -62,7 +63,13 @@ To do this we are using a few libraries and providers, in concert:
 * [ABIEOS Serialization Provider for Android](https://github.com/EOSIO/eosio-java-android-abieos-serialization-provider): A pluggable serialization provider for EOSIO SDK for Java using ABIEOS (for transaction and action conversion between JSON and binary data representations)
 * [Softkey Signature Provider](https://github.com/EOSIO/eosio-java-softkey-signature-provider): An example pluggable signature provider for EOSIO SDK for Java for signing transactions using in-memory keys (not for production use)
 
-[`TransactionTask.java`](app/src/main/java/one/block/androidexampleapp/TransactionTask.java) contains basic sample code for constructing, signing and broadcasting transactions using the `eosiojava` libraries:
+## How to Transact
+
+[`TransactionTask.java`](app/src/main/java/one/block/androidexampleapp/TransactionTask.java) contains basic sample code for constructing, signing and broadcasting transactions using the `eosiojava` libraries.
+
+### Set Up Your TransactionSession
+
+First, set up your [`TransactionSession`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionSession.java). This is your factory for creating new transactions:
 
 1. Create an instance of the [`AbiEosSerializationProviderImpl`](https://github.com/EOSIO/eosio-java-android-abieos-serialization-provider/blob/develop/eosiojavaabieos/src/main/java/one/block/eosiojavaabieosserializationprovider/AbiEosSerializationProviderImpl.java) serialization provider from the [`eosiojavaandroidabieosserializationprovider`](https://github.com/EOSIO/eosio-java-android-abieos-serialization-provider) library.
 1. Create an instance of the [`EosioJavaRpcProviderImpl`](https://github.com/EOSIO/eosio-java-android-rpc-provider/blob/master/eosiojavarpcprovider/src/main/java/one/block/eosiojavarpcprovider/implementations/EosioJavaRpcProviderImpl.java) RPC provider with an input string pointing to a nodeos RPC endpoint.
@@ -70,15 +77,20 @@ To do this we are using a few libraries and providers, in concert:
 1. Create an instance of the [` SoftKeySignatureProviderImpl`](https://github.com/EOSIO/eosio-java-softkey-signature-provider/blob/master/eosiojavasoftkeysignatureprovider/src/main/java/one/block/eosiosoftkeysignatureprovider/SoftKeySignatureProviderImpl.java) signature provider. (This particular implementation is not recommended for production use due to its simplistic management of private keys).
     - Import an EOS private key associated with the sender's account.
 1. Create an instance of [`TransactionSession`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionSession.java), which is used for spawning [`TransactionProcessor`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionProcessor.java)s.
+
+### Create, Sign and Broadcast Transactions
+
+Now you're ready to create transactions using your `TransactionSession`:
+
 1. Create an instance of [`TransactionProcessor`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionProcessor.java) from the [`TransactionSession`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionSession.java) instance above by calling ` TransactionSession#getTransactionProcessor()` or `TransactionSession#getTransactionProcessor(Transaction)`.
 1. Call `TransactionProcessor#prepare(List)` with a list of Actions. The method will serialize the actions, which can always be queried with `Transaction#getActions()`. The transaction now is ready to be signed and broadcast.
 1. Call `TransactionProcessor#signAndBroadcast()` to sign the transaction inside [`TransactionProcessor`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionProcessor.java) and broadcast it.
 
-For a more comprehensive list of available provider implementations, see [`EOSIO SDK for Java - Provider Interface Architecture`](https://github.com/EOSIO/eosio-java/tree/master#provider-interface-architecture). For more details about the architecture of EOSIO SDK for Java, see [`EOSIO SDK for Java - UML Design`](document/uml_design.pdf).
+For a more comprehensive list of available provider implementations, see [`EOSIO SDK for Java - Provider Interface Architecture`](https://github.com/EOSIO/eosio-java/tree/master#provider-interface-architecture). For more details about the architecture of EOSIO SDK for Java, see [`EOSIO SDK for Java - UML Design`](https://github.com/EOSIO/eosio-java/tree/master/document/uml_design.pdf).
 
 ## Want to help?
 
-Interested in improving the example application? That's awesome! Here are some [Contribution Guidelines](./CONTRIBUTING.md) and the [`Code of Conduct`](./CONTRIBUTING.md#conduct).
+Interested in improving the example application? That's awesome! Here are some [Contribution Guidelines](./CONTRIBUTING.md) and the [Code of Conduct](./CONTRIBUTING.md#conduct).
 
 If you'd like to contribute to the EOSIO SDK for Java libraries themselves, please see the contribution guidelines on those individual repos.
 
