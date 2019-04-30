@@ -6,13 +6,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import androidx.test.runner.AndroidJUnit4;
-import one.block.eosiojava.error.serializationprovider.DeserializeAbiError;
-import one.block.eosiojava.error.serializationprovider.DeserializeError;
-import one.block.eosiojava.error.serializationprovider.DeserializeTransactionError;
-import one.block.eosiojava.error.serializationprovider.SerializationProviderError;
-import one.block.eosiojava.error.serializationprovider.SerializeTransactionError;
+import one.block.eosiojava.error.serializationProvider.DeserializeAbiError;
+import one.block.eosiojava.error.serializationProvider.DeserializeError;
+import one.block.eosiojava.error.serializationProvider.DeserializeTransactionError;
+import one.block.eosiojava.error.serializationProvider.SerializationProviderError;
+import one.block.eosiojava.error.serializationProvider.SerializeTransactionError;
 import one.block.eosiojava.models.AbiEosSerializationObject;
-import one.block.eosiojavaabieosserializationprovider.AbiEos;
+import one.block.eosiojavaabieosserializationprovider.AbiEosSerializationProviderImpl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -26,12 +26,12 @@ import static org.junit.Assert.fail;
 @RunWith(AndroidJUnit4.class)
 public class AbiEosInstrumentedTest {
 
-    private static AbiEos abieos;
+    private static AbiEosSerializationProviderImpl abieos;
 
     @BeforeClass
     public static void startSetup() {
         try {
-            abieos = new AbiEos();
+            abieos = new AbiEosSerializationProviderImpl();
         } catch (SerializationProviderError serializationProviderError) {
             serializationProviderError.printStackTrace();
             fail();

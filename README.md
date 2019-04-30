@@ -18,7 +18,7 @@ EOSIO Labs repositories are experimental.  Developers in the community are encou
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [About the App](#about-the-app)
-- [Contribution](#contribution)
+- [Want to help](#want-to-help)
 - [License & Legal](#license)
 
 ## Requirements
@@ -50,22 +50,22 @@ To get the example application up and running:
 
 ## About the App
 
-The example app is using these below libraries to communicate with EOSIO chain: 
+The app demonstrates how to: 
+- Use [Rpc provider implementation](https://github.com/EOSIO/eosio-java-android-rpc-provider) to query the chain for an account's token balance.
+- Get a new Transaction from [`TransactionSession`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionSession.java).
+- Create an action and add it to a transaction,
+- and sign and broadcast the transaction.
 
-```java
-implementation 'one.block:eosiojava:0.0.1'
-implementation 'one.block:eosiojavasoftkeysignatureprovider:0.0.1'
-implementation 'one.block:eosiojavaandroidabieosserializationprovider:0.0.1'
-implementation 'one.block:eosiojavarpcprovider:0.0.1'
-```
+To do this we are using a few libraries and providers, in concert:
 
-The app can check user's balance and send transaction from the user to another user. 
+* [EOSIO SDK for Java](https://github.com/EOSIO/eosio-java): The core EOSIO SDK for Java library
+* [RPC Provider](https://github.com/EOSIO/eosio-java-android-rpc-provider): The RPC provider implementation in the core library
+* [ABIEOS Serialization Provider](https://github.com/EOSIO/eosio-java-android-abieos-serialization-provider): A pluggable serialization provider for EOSIO SDK for Java using ABIEOS (for transaction and action conversion between JSON and binary data representations)
+* [Softkey Signature Provider](https://github.com/EOSIO/eosio-java-softkey-signature-provider): An example pluggable signature provider for EOSIO SDK for Java for signing transactions using in-memory keys (not for production use)
 
-The [`TransactionTask.java`](app/src/main/java/one/block/asaptestapp/TransactionTask.java) contains the sample code about how to use eosiojava libraries to send out transactions in a most basic/easiest way.
+The [`TransactionTask.java`](app/src/main/java/one/block/asaptestapp/TransactionTask.java) contains the sample code about how to use eosiojava libraries to send out transactions in a most basic/easiest way. Basic steps:
 
-Basic steps:
-
-1. Create serialization provider as an instant of {@link AbiEosSerializationProviderImpl} from [`eosiojavaandroidabieosserializationprovider`](https://github.com/EOSIO/eosio-java-android-abieos-serialization-provider) library.
+1. Create serialization provider as an instant of [`AbiEosSerializationProviderImpl`](https://github.com/EOSIO/eosio-java-android-abieos-serialization-provider/blob/develop/eosiojavaabieos/src/main/java/one/block/eosiojavaabieosserializationprovider/AbiEosSerializationProviderImpl.java) from [`eosiojavaandroidabieosserializationprovider`](https://github.com/EOSIO/eosio-java-android-abieos-serialization-provider) library.
 1. Create RPC provider as an instant of [`EosioJavaRpcProviderImpl`](https://github.com/EOSIO/eosio-java-android-rpc-provider/blob/master/eosiojavarpcprovider/src/main/java/one/block/eosiojavarpcprovider/implementations/EosioJavaRpcProviderImpl.java) with an input string point to a node backend.
 1. Create ABI provider as an instant of [`ABIProviderImpl`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/implementations/ABIProviderImpl.java) with instants of Rpc provider and serialization provider.
 1. Create Signature provider as an instant of [` SoftKeySignatureProviderImpl`](https://github.com/EOSIO/eosio-java-softkey-signature-provider/blob/master/eosiojavasoftkeysignatureprovider/src/main/java/one/block/eosiosoftkeysignatureprovider/SoftKeySignatureProviderImpl.java) which is not recommended for production because of its simple key management.
@@ -75,9 +75,16 @@ Basic steps:
 1. Call `TransactionProcessor#prepare(List)` with a list of Actions which is desired to be sent to backend. The method will serialize the list of action to list of hex and keep them inside the list of `Transaction#getActions()`. The transaction now is ready to be signed and broadcast.
 1. Call `TransactionProcessor#signAndBroadcast()` to sign the transaction inside [`TransactionProcessor`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionProcessor.java) and broadcast it to backend.
  
+For a more comprehensive list of available provider implementations, see [`EOSIO SDK for Java - Provider interface architecture`](https://github.com/EOSIO/eosio-java/tree/master#provider-interface-architecture).
 
-## Contribution
-Check out the [Contributing](./CONTRIBUTING.md) guide.
+For more detail about the architecture of EOSIO SDK for Java, see [`EOSIO SDK for Java - UML Design`](document/uml_design.pdf)
+
+## Want to help
+Check out the  guide.
+
+Interested in improving the example application? That's awesome! Here are some [Contribution Guidelines](./CONTRIBUTING.md) and the [`Code of Conduct`](./CONTRIBUTING.md#conduct).
+
+If you'd like to contribute to the EOSIO SDK for Swift libraries themselves, please see the contribution guidelines on those individual repos.
 
 ## License
 [MIT licensed](./LICENSE)
