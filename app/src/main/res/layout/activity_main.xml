@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_from_account"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/guideline3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_from_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_your_account_name"
+            android:inputType="textPersonName"
+            android:text="@string/from_account" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/dark_gray_status_background"
+        android:fadeScrollbars="true"
+        android:padding="5dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
+        android:textColor="@color/light_gray_status_text_color"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/til_private_key" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_to_account"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/tv_balance">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_to_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_receiver_account_name"
+            android:inputType="textPersonName"
+            android:text="@string/to_account" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/til_to_account">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/transfer_amount"
+            android:inputType="textPersonName"
+            android:text="@string/amount" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_memo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/til_amount">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_memo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/label_memo"
+            android:inputType="textPersonName"
+            android:text="@string/memo" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_private_key"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/til_memo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_private_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/private_key"
+            android:inputType="textPersonName"
+            android:text="@string/from_account_private_key" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.92" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <TextView
+        android:id="@+id/tv_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="10dp"
+        android:text="@string/account_balance_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/til_from_account" />
+
+    <Button
+        android:id="@+id/btn_check_balance"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/check"
+        app:layout_constraintBottom_toBottomOf="@+id/til_from_account"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <Button
+        android:id="@+id/btn_transfer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/transfer"
+        app:layout_constraintBottom_toBottomOf="@+id/til_private_key"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/til_private_key" />
+
+    <Button
+        android:id="@+id/btn_clear_log"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
