@@ -35,7 +35,7 @@ To get the example application up and running:
 
 1. Clone this repo: `git clone https://github.com/EOSIO/eosio-java-android-example-app.git`
 1. Open the project with Android Studio.
-1. Create `gradle.properties` file:
+1. Modify `eosio.properties` file:
 
     ```java
     node_url=[your node endpoint URL] //mandatory
