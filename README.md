@@ -1,4 +1,4 @@
-![Java Logo](img/java-logo.png)
+![Java Logo](img/java-logo.png) <img src="img/Android_Robot.png" width="100">
 # EOSIO SDK for Java: Android Example App ![EOSIO Alpha](https://img.shields.io/badge/EOSIO-Alpha-blue.svg)
 [![Software License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](/./LICENSE)
 ![Language Java](https://img.shields.io/badge/Language-Java-yellow.svg)
@@ -7,6 +7,8 @@
 The EOSIO SDK for Java: Android Example App is a simple application demonstrating how to integrate with EOSIO-based blockchains using [EOSIO SDK for Java](https://github.com/EOSIO/eosio-java). The application does two things: fetches your account token balance and pushes a transfer action.
 
 *All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.*
+
+*The Android robot is reproduced or modified from work created and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License.*
 
 <p align="center">
     <img src="img/screenshot.png" width="200">
