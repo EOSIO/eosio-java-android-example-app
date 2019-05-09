@@ -50,15 +50,6 @@ To get the example application up and running:
 
 1. Run the app.
 
-
-If you upgrade gradle plugin to 5+, you can't access the libraries's dependencies without declare them in your `build.gradle`
-
-Example:
-* Accessing `okhttp` classes on your code:
-```java
-implementation 'com.squareup.okhttp3:okhttp:version'
-```
-
 ## About the App
 
 The app demonstrates how to:
