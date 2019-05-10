@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ASAP Test App</string>
+    <string name="app_name">Example App</string>
     <string name="account_balance">Account\'s balance :</string>
     <string name="hint_your_account_name">Your account name</string>
     <string name="hint_receiver_account_name">Receiver account name</string>
