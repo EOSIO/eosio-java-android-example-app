@@ -18,7 +18,7 @@ public class ErrorUtils {
      * @return the error which class is specified by input. Return null if could not find the specific class.
      */
     @Nullable
-    public static <T extends EosioError> T getErrorObject(Class errorClass, EosioError error) {
+    public static <T extends Exception> T getErrorObject(Class errorClass, Exception error) {
         if (error.getClass() == errorClass) {
             return (T) error;
         }
@@ -28,7 +28,7 @@ public class ErrorUtils {
         }
 
         // Recursively look deeper
-        return getErrorObject(errorClass, (EosioError) error.getCause());
+        return getErrorObject(errorClass, (Exception) error.getCause());
     }
 
     /**

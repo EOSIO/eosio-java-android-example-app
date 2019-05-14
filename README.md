@@ -44,9 +44,10 @@ To get the example application up and running:
     from_account_private_key=[your private key] //optional
     amount=[amount to transfer] //optional; e.g., 1.1234 EOS
     memo=[transfer memo] //optional
+    private_keys=[for multiple key tests in instrumentation test] //optional
     ```
 
-    `from_account`, `to_account`, `from_account_private_key`, `amount` and `memo` are optional convenience properties which will prefill the app's form. `node_url` is required.
+    `from_account`, `to_account`, `from_account_private_key`, `amount`, `memo` and `private_keys` are optional convenience properties which will prefill the app's form. `node_url` is required.
 
 1. Run the app.
 
@@ -88,7 +89,11 @@ Now you're ready to create transactions using your `TransactionSession`:
 1. Call `TransactionProcessor#prepare(List)` with a list of Actions. The method will serialize the actions, which can always be queried with `Transaction#getActions()`. The transaction now is ready to be signed and broadcast.
 1. Call `TransactionProcessor#signAndBroadcast()` to sign the transaction inside [`TransactionProcessor`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionProcessor.java) and broadcast it.
 
-For a more comprehensive list of available provider implementations, see [`EOSIO SDK for Java - Provider Interface Architecture`](https://github.com/EOSIO/eosio-java/tree/master#provider-interface-architecture). For more details about the architecture of EOSIO SDK for Java, see [`EOSIO SDK for Java - UML Design`](https://github.com/EOSIO/eosio-java/tree/master/document/uml_design.pdf).
+For a more comprehensive list of available provider implementations, see [`EOSIO SDK for Java - Provider Interface Architecture`](https://github.com/EOSIO/eosio-java/tree/master#provider-interface-architecture). 
+
+For more details about the complete workflow of EOSIO SDK for Java, see [`EOSIO SDK for Java - Complete workflow`](https://github.com/EOSIO/eosio-java/tree/master/documents/complete_workflow.pdf).
+
+An overview of the error model used in this library can be found in the [`EOSIO SDK for Java - Error Model`](https://github.com/EOSIO/eosio-java/tree/master/documents/error_model.pdf)
 
 ## Want to help?
 
