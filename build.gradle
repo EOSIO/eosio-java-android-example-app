@@ -17,6 +17,13 @@ buildscript {
 allprojects {
     repositories {
         google()
+        maven {
+            credentials{
+                username artifactory_username
+                password artifactory_password
+            }
+            url artifactory_path_android_libraries
+        }
         jcenter()
     }
 }
