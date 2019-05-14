@@ -44,7 +44,7 @@ To get the example application up and running:
     from_account_private_key=[your private key] //optional
     amount=[amount to transfer] //optional; e.g., 1.1234 EOS
     memo=[transfer memo] //optional
-    private_keys=[for multiple key test in instrumentation test] //optional
+    private_keys=[for multiple key tests in instrumentation test] //optional
     ```
 
     `from_account`, `to_account`, `from_account_private_key`, `amount`, `memo` and `private_keys` are optional convenience properties which will prefill the app's form. `node_url` is required.
