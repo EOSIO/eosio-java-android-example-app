@@ -24,6 +24,7 @@ android {
             resValue "string", "from_account_private_key", properties.getProperty("from_account_private_key", "")
             resValue "string", "amount", properties.getProperty("amount", "")
             resValue "string", "memo", properties.getProperty("memo", "")
+            resValue "string", "private_keys", properties.getProperty("private_keys", "")
         }
         release {
             resValue "string", "node_url", properties.getProperty("node_url", "")
@@ -32,6 +33,7 @@ android {
             resValue "string", "from_account_private_key", properties.getProperty("from_account_private_key", "")
             resValue "string", "amount", properties.getProperty("amount", "")
             resValue "string", "memo", properties.getProperty("memo", "")
+            resValue "string", "private_keys", properties.getProperty("private_keys", "")
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

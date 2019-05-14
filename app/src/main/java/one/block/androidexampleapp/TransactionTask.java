@@ -80,6 +80,7 @@ public class TransactionTask extends AsyncTask<String, String, Void> {
         String privateKey = params[3];
         String amount = params[4];
         String memo = params[5];
+        boolean isLegacyKey = Boolean.valueOf(params[6]);
 
         this.publishProgress("Transferring " + amount + " to " + toAccount);
 
@@ -107,6 +108,7 @@ public class TransactionTask extends AsyncTask<String, String, Void> {
 
         // Creating Signature provider
         ISignatureProvider signatureProvider = new SoftKeySignatureProviderImpl();
+        ((SoftKeySignatureProviderImpl) signatureProvider).setReturnLegacyFormatForK1(isLegacyKey);
 
         try {
             ((SoftKeySignatureProviderImpl) signatureProvider).importKey(privateKey);
