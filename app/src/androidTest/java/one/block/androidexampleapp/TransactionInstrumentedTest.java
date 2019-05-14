@@ -32,6 +32,7 @@ public class TransactionInstrumentedTest {
 
         for (int i = 0; i < privateKeysJSON.length(); i++) {
             testSubmitTransactionByMultipleKey(fromAccount, toAccount, amount, memo, privateKeysJSON.getString(i), nodeURL, true);
+            Thread.sleep(1000);
         }
     }
 
