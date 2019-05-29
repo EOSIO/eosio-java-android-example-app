@@ -24,6 +24,8 @@ android {
             resValue "string", "amount", properties.getProperty("amount", "")
             resValue "string", "memo", properties.getProperty("memo", "")
             resValue "string", "private_keys", properties.getProperty("private_keys", "")
+
+            manifestPlaceholders = [usesCleartextTraffic:"true"]
         }
         release {
             resValue "string", "node_url", properties.getProperty("node_url", "")
@@ -33,6 +35,8 @@ android {
             resValue "string", "amount", properties.getProperty("amount", "")
             resValue "string", "memo", properties.getProperty("memo", "")
             resValue "string", "private_keys", properties.getProperty("private_keys", "")
+
+            manifestPlaceholders = [usesCleartextTraffic:"false"]
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

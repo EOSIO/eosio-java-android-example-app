@@ -66,6 +66,8 @@ To do this we are using a few libraries and providers, in concert:
 * [ABIEOS Serialization Provider for Android](https://github.com/EOSIO/eosio-java-android-abieos-serialization-provider): A pluggable serialization provider for EOSIO SDK for Java using ABIEOS (for transaction and action conversion between JSON and binary data representations)
 * [Softkey Signature Provider](https://github.com/EOSIO/eosio-java-softkey-signature-provider): An example pluggable signature provider for EOSIO SDK for Java for signing transactions using in-memory keys (not for production use)
 
+**WARNING**: [Android 9 disables clear text traffic support by default](https://developer.android.com/training/articles/security-config#CleartextTrafficPermitted) so `android:usesCleartextTraffic` setting in [AndroidManifest.xml](https://github.com/EOSIO/eosio-java-android-example-app/blob/master/app/src/main/AndroidManifest.xml) is used to enable/disable the support depending on the build variant you use. 
+
 ## How to Transact
 
 [`TransactionTask.java`](app/src/main/java/one/block/androidexampleapp/TransactionTask.java) contains basic sample code for constructing, signing and broadcasting transactions using the `eosiojava` libraries.
