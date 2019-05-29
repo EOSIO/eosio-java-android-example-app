@@ -31,7 +31,7 @@ public class TransactionInstrumentedTest {
         JSONArray privateKeysJSON = new JSONArray(appContext.getString(R.string.private_keys));
 
         for (int i = 0; i < privateKeysJSON.length(); i++) {
-            testSubmitTransactionByMultipleKey(fromAccount, toAccount, amount, memo, privateKeysJSON.getString(i), nodeURL, true);
+            testSubmitTransactionByMultipleKey(fromAccount, toAccount, amount, memo, privateKeysJSON.getString(i), nodeURL);
             Thread.sleep(1000);
         }
     }
@@ -42,8 +42,7 @@ public class TransactionInstrumentedTest {
             String amount,
             String memo,
             final String privateKey,
-            String url,
-            boolean isLegacy) throws InterruptedException {
+            String url) throws InterruptedException {
 
         final CountDownLatch signal = new CountDownLatch(1);
 
@@ -59,7 +58,7 @@ public class TransactionInstrumentedTest {
                 assertTrue(success);
                 signal.countDown();
             }
-        }).execute(url, fromAccount, toAccount, privateKey, amount, memo, Boolean.valueOf(isLegacy).toString());
+        }).execute(url, fromAccount, toAccount, privateKey, amount, memo);
 
         signal.await(5000, TimeUnit.MILLISECONDS);
         assertTrue(true);
