@@ -1,0 +1,53 @@
+language: android
+jdk: oraclejdk8
+env:
+ global:
+ - ANDROID_API=28
+ - EMULATOR_API=28
+ - ANDROID_BUILD_TOOLS=28.0.3
+ - ABI=x86_64
+ - EMU_FLAVOR=default # use google_apis flavor if no default flavor emulator
+ - ADB_INSTALL_TIMEOUT=10 # minutes
+ - ANDROID_HOME=/usr/local/android-sdk
+ - TOOLS=${ANDROID_HOME}/tools
+ - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
+dist: trusty
+android:
+  components:
+    - tools
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+
+licenses:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
+
+
+install:
+  - touch $HOME/.android/repositories.cfg
+  - yes | sdkmanager "platform-tools" >/dev/null
+  - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS" >/dev/null
+  - yes | sdkmanager "tools" >/dev/null
+  - yes | sdkmanager "platforms;android-$ANDROID_API" >/dev/null
+  - yes | sdkmanager "platforms;android-$EMULATOR_API" >/dev/null #for matrix builds, we want to also install the matrix version. 
+  - yes | sdkmanager "system-images;android-$EMULATOR_API;$EMU_FLAVOR;$ABI" >/dev/null
+
+
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+cache:
+  directories:
+  - $HOME/.gradle/caches/
+  - $HOME/.gradle/wrapper/
+  - $HOME/.android/build-cache
+
+before_script:
+  - echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force -n test -k "system-images;android-$EMULATOR_API;$EMU_FLAVOR;$ABI" -c 10M
+  - emulator -verbose -avd test -no-accel -no-snapshot -no-window $AUDIO -camera-back none -camera-front none -selinux permissive -qemu -m 2048 &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+script:
+  - "./gradlew clean build --stacktrace"
+  - "./gradlew clean build connectedCheck --stacktrace"
