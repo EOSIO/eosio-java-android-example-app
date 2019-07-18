@@ -11,6 +11,7 @@ env:
  - ANDROID_HOME=/usr/local/android-sdk
  - TOOLS=${ANDROID_HOME}/tools
  - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
+ - VERACODE_APP_NAME=eosio-java-android-example-app
 dist: trusty
 android:
   components:
@@ -23,6 +24,9 @@ licenses:
     - 'android-sdk-preview-license-.+'
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
+
+before_install:
+  - wget https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$VERACODE_WRAPPER_VERSION/vosp-api-wrappers-java-$VERACODE_WRAPPER_VERSION.jar
 
 
 install:
@@ -51,3 +55,14 @@ before_script:
 script:
   - "./gradlew clean build --stacktrace"
   - "./gradlew clean build connectedCheck --stacktrace"
+
+# script: 
+#   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./scripts/veracode-scan.sh; fi'  
+  
+deploy:
+  - provider: script
+    script: bash scripts/veracode-scan.sh
+    on:
+      branch:
+        - develop
+        - /^release.*$/
