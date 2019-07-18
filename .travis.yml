@@ -25,11 +25,8 @@ licenses:
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
 
-before_install:
-  - wget https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$VERACODE_WRAPPER_VERSION/vosp-api-wrappers-java-$VERACODE_WRAPPER_VERSION.jar
-
-
 install:
+  - wget https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/$VERACODE_WRAPPER_VERSION/vosp-api-wrappers-java-$VERACODE_WRAPPER_VERSION.jar
   - touch $HOME/.android/repositories.cfg
   - yes | sdkmanager "platform-tools" >/dev/null
   - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS" >/dev/null
@@ -61,8 +58,10 @@ script:
   
 deploy:
   - provider: script
+    skip_cleanup: true
     script: bash scripts/veracode-scan.sh
     on:
       branch:
+        - deploy-fix
         - develop
         - /^release.*$/
