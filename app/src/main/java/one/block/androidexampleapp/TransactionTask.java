@@ -17,8 +17,8 @@ import one.block.eosiojava.interfaces.ISignatureProvider;
 import one.block.eosiojava.models.rpcProvider.Action;
 import one.block.eosiojava.models.rpcProvider.Authorization;
 import one.block.eosiojava.models.rpcProvider.Transaction;
-import one.block.eosiojava.models.rpcProvider.response.PushTransactionResponse;
 import one.block.eosiojava.models.rpcProvider.response.RPCResponseError;
+import one.block.eosiojava.models.rpcProvider.response.SendTransactionResponse;
 import one.block.eosiojava.session.TransactionProcessor;
 import one.block.eosiojava.session.TransactionSession;
 import one.block.eosiojavaabieosserializationprovider.AbiEosSerializationProviderImpl;
@@ -143,7 +143,7 @@ public class TransactionTask extends AsyncTask<String, String, Void> {
 
             // Sign and broadcast the transaction.
             this.publishProgress("Signing and Broadcasting Transaction...");
-            PushTransactionResponse response = processor.signAndBroadcast();
+            SendTransactionResponse response = processor.signAndBroadcast();
 
             this.publishProgress(Boolean.toString(true), "Finished!  Your transaction id is:  " + response.getTransactionId());
         } catch (TransactionPrepareError transactionPrepareError) {
