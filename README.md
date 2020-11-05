@@ -54,7 +54,7 @@ To get the example application up and running:
 ## About the App
 
 The app demonstrates how to:
-- use the [Android RPC Provider implementation](https://github.com/EOSIO/eosio-java-android-rpc-provider) to query the chain for an account's token balance,
+- use the [Java RPC Provider implementation](https://github.com/EOSIO/eosio-java-rpc-provider) to query the chain for an account's token balance,
 - get a new transaction from [`TransactionSession`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionSession.java),
 - create an action and add it to a transaction,
 - and sign and broadcast the transaction.
@@ -62,7 +62,7 @@ The app demonstrates how to:
 To do this we are using a few libraries and providers, in concert:
 
 * [EOSIO SDK for Java](https://github.com/EOSIO/eosio-java): The core EOSIO SDK for Java library
-* [Android RPC Provider](https://github.com/EOSIO/eosio-java-android-rpc-provider): An RPC provider implementation for Android
+* [Java RPC Provider](https://github.com/EOSIO/eosio-java-rpc-provider): An RPC provider implementation for Java (including Android)
 * [ABIEOS Serialization Provider for Android](https://github.com/EOSIO/eosio-java-android-abieos-serialization-provider): A pluggable serialization provider for EOSIO SDK for Java using ABIEOS (for transaction and action conversion between JSON and binary data representations)
 * [Softkey Signature Provider](https://github.com/EOSIO/eosio-java-softkey-signature-provider): An example pluggable signature provider for EOSIO SDK for Java for signing transactions using in-memory keys (not for production use)
 
@@ -77,7 +77,7 @@ To do this we are using a few libraries and providers, in concert:
 First, set up your [`TransactionSession`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/session/TransactionSession.java). This is your factory for creating new transactions:
 
 1. Create an instance of the [`AbiEosSerializationProviderImpl`](https://github.com/EOSIO/eosio-java-android-abieos-serialization-provider/blob/develop/eosiojavaabieos/src/main/java/one/block/eosiojavaabieosserializationprovider/AbiEosSerializationProviderImpl.java) serialization provider from the [`eosiojavaandroidabieosserializationprovider`](https://github.com/EOSIO/eosio-java-android-abieos-serialization-provider) library.
-1. Create an instance of the [`EosioJavaRpcProviderImpl`](https://github.com/EOSIO/eosio-java-android-rpc-provider/blob/master/eosiojavarpcprovider/src/main/java/one/block/eosiojavarpcprovider/implementations/EosioJavaRpcProviderImpl.java) RPC provider with an input string pointing to a nodeos RPC endpoint. You can also use `EosioJavaRpcProviderImpl(String, Boolean)` constructor to enable network debug log.
+1. Create an instance of the [`EosioJavaRpcProviderImpl`](https://github.com/EOSIO/eosio-java-rpc-provider/blob/master/eosiojavarpcprovider/src/main/java/one/block/eosiojavarpcprovider/implementations/EosioJavaRpcProviderImpl.java) RPC provider with an input string pointing to a nodeos RPC endpoint. You can also use `EosioJavaRpcProviderImpl(String, Boolean)` constructor to enable network debug log.
 1. Create an instance of the [`ABIProviderImpl`](https://github.com/EOSIO/eosio-java/blob/master/eosiojava/src/main/java/one/block/eosiojava/implementations/ABIProviderImpl.java) ABI provider, instantiating it with the RPC and serialization provider instances.
 1. Create an instance of the [` SoftKeySignatureProviderImpl`](https://github.com/EOSIO/eosio-java-softkey-signature-provider/blob/master/eosiojavasoftkeysignatureprovider/src/main/java/one/block/eosiosoftkeysignatureprovider/SoftKeySignatureProviderImpl.java) signature provider. (This particular implementation is not recommended for production use due to its simplistic management of private keys).
     - Import an EOS private key associated with the sender's account.
