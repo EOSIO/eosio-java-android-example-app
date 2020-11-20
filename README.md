@@ -1,5 +1,5 @@
 ![Java Logo](img/java-logo.png) <img src="img/Android_Robot.png" width="100">
-# EOSIO SDK for Java: Android Example App ![EOSIO Alpha](https://img.shields.io/badge/EOSIO-Alpha-blue.svg)
+# EOSIO SDK for Java: Android Example App
 [![Software License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](/./LICENSE)
 ![Language Java](https://img.shields.io/badge/Language-Java-yellow.svg)
 ![](https://img.shields.io/badge/Deployment%20Target-Android%206%2B-blue.svg)
