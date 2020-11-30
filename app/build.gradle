@@ -8,7 +8,7 @@ android {
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
-        versionName "0.1"
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -62,10 +62,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'one.block:eosiojava:0.1.0'
-    implementation 'one.block:eosiojavasoftkeysignatureprovider:0.1.1'
-    implementation 'one.block:eosiojavaandroidabieosserializationprovider:0.1.0'
-    implementation 'one.block:eosiojavarpcprovider:0.1.1'
+    implementation 'one.block:eosiojava:1.0.0'
+    implementation 'one.block:eosiojavasoftkeysignatureprovider:1.0.0'
+    implementation 'one.block:eosiojavaandroidabieosserializationprovider:1.0.0'
+    implementation 'one.block:eosio-java-rpc-provider:1.0.0'
 
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
